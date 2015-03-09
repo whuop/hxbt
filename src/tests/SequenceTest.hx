@@ -8,7 +8,6 @@ import hxbt.Sequence;
  */
 class SequenceTest
 {
-
 	public function new() 
 	{
 		var s = new Sequence();
@@ -16,9 +15,10 @@ class SequenceTest
 		s.add(new TestBehavior("1"));
 		s.add(new TestBehavior("2"));
 		
+		trace('/----------- SEQUENCE TEST -----------/');
 		s.tick();
-	}
-	
+		trace('/--------- END SEQUENCE TEST ---------/');
+	}	
 }
 
 class TestBehavior extends Behavior
