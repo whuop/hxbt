@@ -19,16 +19,16 @@
     <class path="C:\HaxeToolkit\haxe\lib\hxcpp\3,1,68" />
     <class path="C:\Users\Kristian\Documents\GitHub\snow" />
     <class path="src" />
-    <class path="bin\android.build\haxe" />
+    <class path="bin\windows.build\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="no-compilation&#xA;android&#xA;arch-armv7&#xA;mobile&#xA;hxcpp_static_std&#xA;snow_audio_openal&#xA;snow_input_sdl&#xA;snow_window_sdl&#xA;luxe_native&#xA;parcel_thread_disabled&#xA;snow_dynamic_link&#xA;snow_native&#xA;luxe&#xA;hxcpp&#xA;snow" />
+    <option directives="no-compilation&#xA;windows&#xA;arch-32&#xA;desktop&#xA;debug&#xA;hxcpp_static_std&#xA;snow_audio_openal&#xA;snow_input_sdl&#xA;snow_window_sdl&#xA;luxe_native&#xA;parcel_thread_disabled&#xA;snow_native&#xA;luxe&#xA;hxcpp&#xA;snow" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="LuxeApp" />
     <option enabledebug="False" />
-    <option additional="-resource version@version&#xA;-resource build@build&#xA;-resource phoenix/defaults/shaders/vert.glsl@default.vert.glsl&#xA;-resource phoenix/defaults/shaders/frag.glsl@default.frag.glsl&#xA;-resource phoenix/defaults/shaders/frag.textured.glsl@default.frag.textured.glsl&#xA;-resource phoenix/defaults/shaders/frag.bitmapfont.glsl@default.frag.bitmapfont.glsl&#xA;-resource luxe/defaults/ui/tiny.ui.png@tiny.ui.png&#xA;-resource luxe/defaults/ui/tiny.button.png@tiny.button.png&#xA;-resource luxe/defaults/fonts/default.png@default.png&#xA;-resource luxe/defaults/fonts/default.fnt@default.fnt" />
+    <option additional="-resource version@version&#xA;-resource build@build&#xA;-resource phoenix/defaults/shaders/vert.glsl@default.vert.glsl&#xA;-resource phoenix/defaults/shaders/frag.glsl@default.frag.glsl&#xA;-resource phoenix/defaults/shaders/frag.textured.glsl@default.frag.textured.glsl&#xA;-resource phoenix/defaults/shaders/frag.bitmapfont.glsl@default.frag.bitmapfont.glsl&#xA;-resource luxe/defaults/ui/tiny.ui.png@tiny.ui.png&#xA;-resource luxe/defaults/ui/tiny.button.png@tiny.button.png&#xA;-resource luxe/defaults/fonts/default.png@default.png&#xA;-resource luxe/defaults/fonts/default.fnt@default.fnt&#xA;-debug" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
