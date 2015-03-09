@@ -10,7 +10,6 @@ import tests.BehaviorTest.TestBehavior;
  */
 class BehaviorTest
 {
-
 	public function new() 
 	{
 		var behavior = new TestBehavior();
@@ -22,7 +21,6 @@ class BehaviorTest
 		trace('Terminated with status: ${behavior.m_terminateStatus}');
 		trace('/--------- END BEHAVIOR TEST ---------/');
 	}
-	
 }
 
 
