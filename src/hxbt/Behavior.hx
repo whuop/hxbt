@@ -21,10 +21,32 @@ class Behavior
 {
 	
 	public var status(default, default) : Status = Status.INVALID;
+	private var m_node : Node;
+	private var m_task : Task;
 	
-	public function new() 
+	public function new(?node : Node) 
 	{
+		if (node != null)
+		{
+			setup(node);
+		}
+	}
+	
+	public function setup(node : Node) : Void
+	{
+		teardown();
 		
+		m_node = node;
+		m_task = node.create();
+	}
+	
+	public function teardown() : Void
+	{
+		if (m_task == null)
+			return;
+			
+		m_node.destroy(m_task);
+		m_task = null;
 	}
 	
 	public function update() : Status { return Status.INVALID; }
@@ -35,17 +57,22 @@ class Behavior
 	{
 		if (status == Status.INVALID)
 		{
-			onInitialize();
+			m_task.onInitialize();
 		}
 		
-		status = update();
+		status = m_task.update();
 		
 		if (status != Status.RUNNING)
 		{
-			onTerminate(status);
+			m_task.onTerminate(status);
 		}
 		
 		return status;
 	}
 	
+	
+	public function get() : Task 
+	{
+		return m_task;
+	}
 }
