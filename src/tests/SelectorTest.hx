@@ -10,13 +10,11 @@ class SelectorTest
 {
 	public function new() 
 	{
-		
-		
-		trace('/----------- SEQUENCE TEST -----------/');
+		trace('/----------- SELECTOR TEST -----------/');
 		firstFail();
 		firstSecondFail();
 		allSucceed();
-		trace('/--------- END SEQUENCE TEST ---------/');
+		trace('/--------- END SELECTOR TEST ---------/');
 	}
 	
 	private function firstFail()
