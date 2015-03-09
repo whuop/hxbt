@@ -1,7 +1,7 @@
 package;
 
 import luxe.Input;
-import gen2tests.TaskTest;
+import tests.SelectorTest;
 
 class Main extends luxe.Game 
 {
@@ -9,8 +9,7 @@ class Main extends luxe.Game
 	{
 		//new BehaviorTest();
 		//new SequenceTest();
-		//new SelectorTest();
-		new TaskTest();
+		new SelectorTest();
 	}
 
 	override function onkeyup(e:KeyEvent) 
