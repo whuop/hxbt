@@ -1,14 +1,15 @@
 package;
 
 import luxe.Input;
-import tests.SequenceTest;
+import tests.SelectorTest;
 
 class Main extends luxe.Game 
 {
 	override function ready() 
 	{
 		//new BehaviorTest();
-		new SequenceTest();
+		//new SequenceTest();
+		new SelectorTest();
 	}
 
 	override function onkeyup(e:KeyEvent) 
