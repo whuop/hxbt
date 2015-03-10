@@ -1,15 +1,18 @@
 package;
 
 import luxe.Input;
-import tests.SelectorTest;
+import tests.BehaviorTreeTest;
 
 class Main extends luxe.Game 
 {
+	var behaviorTreeTest : BehaviorTreeTest;
+	
 	override function ready() 
 	{
 		//new BehaviorTest();
 		//new SequenceTest();
-		new SelectorTest();
+		//new SelectorTest();
+		behaviorTreeTest = new BehaviorTreeTest();
 	}
 
 	override function onkeyup(e:KeyEvent) 
@@ -20,6 +23,6 @@ class Main extends luxe.Game
 
 	override function update(dt:Float) 
 	{
-		
+		behaviorTreeTest.update(dt);
 	}
 }

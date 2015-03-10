@@ -9,7 +9,7 @@ class BehaviorTree
 {
 	//	The frequency decides how often the behavior tree should update.
 	//	Frequency of 0.2 will make the tree update 5 times a second.
-	public var frequency(get, set) : Float;
+	public var frequency(default, default) : Float;
 	
 	//	Root of the behavior tree.
 	private var m_tree : Behavior;
