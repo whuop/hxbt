@@ -18,11 +18,11 @@ import tests.BehaviorTreeTest.TreeContext;
  
 class BehaviorTreeTest
 {
-	private var m_tree : BehaviorTree<TreeContext>;
+	private var m_tree : BehaviorTree;
 	
 	public function new() 
 	{
-		m_tree = new BehaviorTree<TreeContext>();
+		m_tree = new BehaviorTree();
 		
 		var sequence = new Sequence();
 		sequence.add(new TestBehavior());
