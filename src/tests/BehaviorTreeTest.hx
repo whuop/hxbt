@@ -23,13 +23,12 @@ class BehaviorTreeTest
 		
 		m_tree.setTree(sequence);
 		
-		m_tree.update(0.3);
-		m_tree.update(0.3);
+		
 	}
 
 	public function update(dt : Float) : Void
 	{
-		
+		m_tree.update(dt);
 	}
 }
 

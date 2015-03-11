@@ -39,6 +39,8 @@ class Selector extends Composite
 			//	If the end of the children is hit, that means the whole thing fails.
 			if (m_currentIndex == m_children.length)
 			{
+				//	Reset index otherwise it will crash on next run through
+				m_currentIndex = 0;
 				return Status.FAILURE;
 			}
 		}

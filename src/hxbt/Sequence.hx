@@ -40,6 +40,8 @@ class Sequence extends Composite
 			//	If end of array hit the whole sequence succeeded.
 			if (m_currentIndex == m_children.length)
 			{
+				//	Reset index otherwise it will crash on next run through
+				m_currentIndex = 0;
 				return Status.SUCCESS;
 			}
 		}
