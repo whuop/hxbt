@@ -24,7 +24,7 @@ class SelectorTest
 		s.add(new TestBehavior("0", Status.FAILURE));
 		s.add(new TestBehavior("1", Status.SUCCESS));
 		s.add(new TestBehavior("2", Status.SUCCESS));
-		s.tick();
+		s.tick(null);
 	}
 	
 	private function firstSecondFail()
@@ -34,7 +34,7 @@ class SelectorTest
 		s.add(new TestBehavior("0", Status.FAILURE));
 		s.add(new TestBehavior("1", Status.FAILURE));
 		s.add(new TestBehavior("2", Status.SUCCESS));
-		s.tick();
+		s.tick(null);
 	}
 	
 	private function allSucceed()
@@ -44,7 +44,7 @@ class SelectorTest
 		s.add(new TestBehavior("0", Status.SUCCESS));
 		s.add(new TestBehavior("1", Status.SUCCESS));
 		s.add(new TestBehavior("2", Status.SUCCESS));
-		s.tick();
+		s.tick(null);
 	}
 }
 
@@ -61,17 +61,17 @@ class TestBehavior extends Behavior
 		m_return = returnStatus;
 	}
 	
-	override function onInitialize() : Void
+	override function onInitialize(context : Dynamic) : Void
 	{
 		trace('Initialized ${m_name}');
 	}
 	
-	override function onTerminate(status : Status) : Void
+	override function onTerminate(context : Dynamic, status : Status) : Void
 	{
 		trace('Terminated ${m_name}');
 	}
 	
-	override function update() : Status
+	override function update(context : Dynamic) : Status
 	{
 		trace('Updated ${m_name}');
 		return m_return;

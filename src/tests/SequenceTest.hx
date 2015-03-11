@@ -16,7 +16,7 @@ class SequenceTest
 		s.add(new TestBehavior("2"));
 		
 		trace('/----------- SEQUENCE TEST -----------/');
-		s.tick();
+		s.tick(null);
 		trace('/--------- END SEQUENCE TEST ---------/');
 	}	
 }
@@ -32,17 +32,17 @@ class TestBehavior extends Behavior
 		m_name = name;
 	}
 	
-	override function onInitialize() : Void
+	override function onInitialize(context : Dynamic) : Void
 	{
 		trace('Initialized ${m_name}');
 	}
 	
-	override function onTerminate(status : Status) : Void
+	override function onTerminate(context : Dynamic, status : Status) : Void
 	{
 		trace('Terminated ${m_name}');
 	}
 	
-	override function update() : Status
+	override function update(context : Dynamic) : Status
 	{
 		trace('Updated ${m_name}');
 		return Status.SUCCESS;

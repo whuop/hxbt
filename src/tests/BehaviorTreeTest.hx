@@ -25,9 +25,9 @@ class BehaviorTreeTest
 		m_tree = new BehaviorTree<TreeContext>();
 		
 		var sequence = new Sequence();
-		sequence.add(new TestBehavior("0", Status.SUCCESS));
-		sequence.add(new TestBehavior("1", Status.SUCCESS));
-		sequence.add(new TestBehavior("2", Status.SUCCESS));
+		sequence.add(new TestBehavior());
+		sequence.add(new TestBehavior());
+		sequence.add(new TestBehavior());
 		
 		m_tree.set(sequence, { string : 'YourNameHere', forcedStatus : Status.SUCCESS } );
 	}

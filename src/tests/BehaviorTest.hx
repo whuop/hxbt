@@ -13,7 +13,7 @@ class BehaviorTest
 	public function new() 
 	{
 		var behavior = new TestBehavior();
-		behavior.tick();
+		behavior.tick(null);
 		trace('/----------- BEHAVIOR TEST -----------/');
 		trace('Initialized called: ${behavior.m_initializedCalled}');
 		trace('Update called: ${behavior.m_updateCalled}');
@@ -37,18 +37,18 @@ class TestBehavior extends Behavior
 		super();
 	}
 	
-	override function onInitialize() : Void
+	override function onInitialize(context : Dynamic) : Void
 	{
 		m_initializedCalled++;
 	}
 	
-	override function onTerminate(status : Status) : Void
+	override function onTerminate(context : Dynamic, status : Status) : Void
 	{
 		m_terminateCalled++;
 		m_terminateStatus = status;
 	}
 	
-	override function update() : Status
+	override function update(context : Dynamic) : Status
 	{
 		m_updateCalled++;
 		return Status.SUCCESS;
