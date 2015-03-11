@@ -5,7 +5,7 @@ package hxbt;
  * as this has extra functionality.
  * @author Kristian Brodal
  */
-class BehaviorTree
+class BehaviorTree<T>
 {
 	//	The frequency decides how often the behavior tree should update.
 	//	Frequency of 0.2 will make the tree update 5 times a second.
@@ -13,6 +13,10 @@ class BehaviorTree
 	
 	//	Root of the behavior tree.
 	private var m_tree : Behavior;
+	
+	//	The context contains all the data needed to run
+	//	the different behaviors. Also called blackboard in some cases.
+	private var m_context : T;
 	
 	//	When counter reaches 0 tree is updated.
 	private var m_counter : Float;
@@ -25,9 +29,10 @@ class BehaviorTree
 		m_counter = this.frequency;
 	}
 	
-	public function setTree(root : Behavior) : Void
+	public function set(root : Behavior, context : T) : Void
 	{
 		m_tree = root;
+		m_context = context;
 	}
 	
 	public function update(dt : Float) : Void

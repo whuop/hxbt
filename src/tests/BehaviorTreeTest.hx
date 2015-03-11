@@ -8,20 +8,28 @@ import hxbt.Sequence;
  * ...
  * @author Kristian Brodal
  */
+
+ typedef TreeContext = 
+ {
+	integer : Int,
+	float : Float,
+	string : String
+ }
+ 
 class BehaviorTreeTest
 {
-	private var m_tree : BehaviorTree;
+	private var m_tree : BehaviorTree<TreeContext>;
 	
 	public function new() 
 	{
-		m_tree = new BehaviorTree();
+		m_tree = new BehaviorTree<TreeContext>();
 		
 		var sequence = new Sequence();
 		sequence.add(new TestBehavior("0", Status.SUCCESS));
 		sequence.add(new TestBehavior("1", Status.SUCCESS));
 		sequence.add(new TestBehavior("2", Status.SUCCESS));
 		
-		m_tree.setTree(sequence);
+		m_tree.set(sequence, { integer : 3, float : 12.3, string : 'TestString' } );
 		
 		
 	}
