@@ -18,18 +18,18 @@ class Sequence extends Composite
 		super();
 	}
 	
-	override function onInitialize()
+	override function onInitialize(context : Dynamic)
 	{
 		m_currentIndex = 0;
 	}
 	
-	override function update() : Status
+	override function update(context : Dynamic) : Status
 	{
 		//	Keep looping until a child says it is running.
 		while (true)
 		{
 			m_currentChild = m_children[m_currentIndex];
-			var s = m_currentChild.tick();
+			var s = m_currentChild.tick(context);
 			
 			//	If the child failed or is still running, early return.
 			if (s != Status.SUCCESS)

@@ -3,6 +3,7 @@ import hxbt.Behavior;
 import hxbt.Behavior.Status;
 import hxbt.BehaviorTree;
 import hxbt.Sequence;
+import tests.BehaviorTreeTest.TreeContext;
 
 /**
  * ...
@@ -11,9 +12,8 @@ import hxbt.Sequence;
 
  typedef TreeContext = 
  {
-	integer : Int,
-	float : Float,
-	string : String
+	string : String,
+	forcedStatus : Status
  }
  
 class BehaviorTreeTest
@@ -29,9 +29,7 @@ class BehaviorTreeTest
 		sequence.add(new TestBehavior("1", Status.SUCCESS));
 		sequence.add(new TestBehavior("2", Status.SUCCESS));
 		
-		m_tree.set(sequence, { integer : 3, float : 12.3, string : 'TestString' } );
-		
-		
+		m_tree.set(sequence, { string : 'YourNameHere', forcedStatus : Status.SUCCESS } );
 	}
 
 	public function update(dt : Float) : Void
@@ -42,30 +40,24 @@ class BehaviorTreeTest
 
 class TestBehavior extends Behavior
 {
-	public var m_name : String;
-	public var m_return : Status;
-	
-	public function new(name : String, returnStatus : Status)
+	public function new()
 	{
 		super();
-		
-		m_name = name;
-		m_return = returnStatus;
 	}
 	
-	override function onInitialize() : Void
+	override function onInitialize(context : TreeContext) : Void
 	{
-		trace('Initialized ${m_name}');
+		trace('Initialized ${context.string}');
 	}
 	
-	override function onTerminate(status : Status) : Void
+	override function onTerminate(context : TreeContext, status : Status) : Void
 	{
-		trace('Terminated ${m_name}');
+		trace('Terminated ${context.string}');
 	}
 	
-	override function update() : Status
+	override function update(context : TreeContext) : Status
 	{
-		trace('Updated ${m_name}');
-		return m_return;
+		trace('Updated ${context.string}');
+		return context.forcedStatus;
 	}
 }

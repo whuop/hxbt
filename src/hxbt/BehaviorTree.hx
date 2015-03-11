@@ -43,7 +43,7 @@ class BehaviorTree<T>
 			m_counter = this.frequency;
 			if (m_tree != null)
 			{
-				m_tree.tick();
+				m_tree.tick(m_context);
 			}
 		}
 	}

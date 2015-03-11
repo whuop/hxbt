@@ -27,22 +27,22 @@ class Behavior
 		
 	}
 	
-	public function update() : Status { return Status.INVALID; }
-	public function onInitialize() : Void { }
-	public function onTerminate(status : Status) : Void { }
+	public function update( context : Dynamic) : Status { return Status.INVALID; }
+	public function onInitialize( context : Dynamic) : Void { }
+	public function onTerminate(context : Dynamic, status : Status) : Void { }
 	
-	public function tick() : Status 
+	public function tick(context : Dynamic) : Status 
 	{
 		if (status == Status.INVALID)
 		{
-			onInitialize();
+			onInitialize(context);
 		}
 		
-		status = update();
+		status = update(context);
 		
 		if (status != Status.RUNNING)
 		{
-			onTerminate(status);
+			onTerminate(context, status);
 		}
 		
 		return status;
