@@ -55,9 +55,9 @@ class TestBehavior extends Behavior
 		trace('Terminated ${context.string}');
 	}
 	
-	override function update(context : TreeContext) : Status
+	override function update(context : TreeContext, dt : Float) : Status
 	{
-		trace('Updated ${context.string}');
+		trace('Updated ${dt}');
 		return context.forcedStatus;
 	}
 }

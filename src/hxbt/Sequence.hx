@@ -23,13 +23,13 @@ class Sequence extends Composite
 		m_currentIndex = 0;
 	}
 	
-	override function update(context : Dynamic) : Status
+	override function update(context : Dynamic, dt : Float) : Status
 	{
 		//	Keep looping until a child says it is running.
 		while (true)
 		{
 			m_currentChild = m_children[m_currentIndex];
-			var s = m_currentChild.tick(context);
+			var s = m_currentChild.tick(context, dt);
 			
 			//	If the child failed or is still running, early return.
 			if (s != Status.SUCCESS)

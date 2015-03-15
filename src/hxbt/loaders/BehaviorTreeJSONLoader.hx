@@ -4,7 +4,7 @@ import hxbt.BehaviorTree;
 /**
  * The BehaviorTreeJSONLoader loads a behavior from a JSON file
  * with a very simple structure.
- * The structure of the behavior tree json is the following:
+ * The structure of the behavior tree JSON is the following:
 
 	{
 		"tree_name" : 
@@ -35,12 +35,16 @@ class BehaviorTreeJSONLoader
 		
 	}
 	
-	public static function FromJSONString() : BehaviorTree
+	//	Constructs the behavior tree 'treeName' defined in the JSON file 'JSON'.
+	//	Returns constructed tree if successful, returns null if unsuccessful.
+	public static function FromJSONString(JSON : String, treeName : String) : BehaviorTree
 	{
 		return null;
 	}
 	
-	public static function FromJSONObject() : BehaviorTree
+	//	Constructs the behavior tree 'treeName' defined in the JSON file 'JSON'.
+	//	Returns constructed tree if successful, returns null if unsuccessful.
+	public static function FromJSONObject(JSON : Dynamic, treeName : String) : BehaviorTree
 	{
 		return null;
 	}

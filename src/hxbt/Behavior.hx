@@ -27,18 +27,18 @@ class Behavior
 		
 	}
 	
-	public function update( context : Dynamic) : Status { return Status.INVALID; }
+	public function update( context : Dynamic, dt : Float) : Status { return Status.INVALID; }
 	public function onInitialize( context : Dynamic) : Void { }
 	public function onTerminate(context : Dynamic, status : Status) : Void { }
 	
-	public function tick(context : Dynamic) : Status 
+	public function tick(context : Dynamic, dt : Float) : Status 
 	{
 		if (status == Status.INVALID)
 		{
 			onInitialize(context);
 		}
 		
-		status = update(context);
+		status = update(context, dt);
 		
 		if (status != Status.RUNNING)
 		{
