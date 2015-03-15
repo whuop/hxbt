@@ -23,6 +23,14 @@ class Sequence extends Composite
 		m_currentIndex = 0;
 	}
 	
+	override function onTerminate(context : Dynamic, status : Status)
+	{
+		for(_child in m_children)
+		{
+			_child.status = Status.INVALID;
+		}
+	}
+	
 	override function update(context : Dynamic, dt : Float) : Status
 	{
 		//	Keep looping until a child says it is running.
