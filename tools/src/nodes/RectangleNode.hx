@@ -1,35 +1,27 @@
 package nodes;
 import luxe.Color;
+import phoenix.geometry.QuadGeometry;
 
 class RectangleNode extends BaseNode
 {
-	public var x(default, default) : Int;
-	public var y(default, default) : Int;
-	public var width(default, default) : Int;
-	public var height(default, default) : Int;
-	public var color(default, default) : Color;
+
+	public var box(default, default) : QuadGeometry;
 	
-	public function new(_name : String, _x : Int, _y : Int, _width : Int, _height : Int, _color : Color) 
+	public function new(_name : String, _width : Int, _height : Int, _color : Color) 
 	{
 		super( name );
-		this.x = _x;
-		this.y = _y;
-		this.width = _width;
-		this.height = _height;
-		this.color = _color;
+		box = Luxe.draw.box( {
+			x : 0,
+			y : 0,
+			w : _width,
+			h : _height,
+			color : _color
+		});
+		box.transform.parent = this.transform;
 	}
 	
 	override function update(dt : Float) : Void
 	{
-		Luxe.draw.rectangle( {
-			x : this.x,
-			y : this.y,
-			w : this.width,
-			h : this.height,
-			color : this.color,
-			immediate : true
-		});
-		
 		super.update(dt);
 	}
 }
