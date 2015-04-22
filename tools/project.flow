@@ -1,12 +1,12 @@
 {
   project : {
-    name : 'empty',
+    name : 'hxbtGraph',
     version : '1.0.0',
-    author : 'luxeengine',
+    author : 'Kristian Brodal ( whuop )',
 
     app : {
-      name : 'luxe_empty',
-      package : 'com.luxeengine.empty',
+      name : 'hxbtGraph',
+      package : 'com.whuop.hxbtGraph',
       main : 'Main'
     },
 

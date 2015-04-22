@@ -6,6 +6,7 @@ class Main extends luxe.Game
 {
 	override function ready() 
 	{
+		Core.Initialize();
 	}
 
 	override function onkeyup(e:KeyEvent) 
