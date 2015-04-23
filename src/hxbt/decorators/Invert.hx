@@ -4,7 +4,9 @@ import hxbt.Behavior.Status;
 import hxbt.Decorator;
 
 /**
- * Will always succeed no matter whether the child succeeds or fails
+ * Returns success if the child returns failure,
+ * returns failure if the child returns success,
+ * otherwise returns what the child returns
  * @author Kenton Hamaluik
  */
 class Invert extends Decorator

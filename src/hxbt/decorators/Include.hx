@@ -5,7 +5,7 @@ import hxbt.BehaviorTree;
 import hxbt.Decorator;
 
 /**
- * Will always succeed no matter whether the child succeeds or fails
+ * Includes an entire behaviour tree as a child and runs it
  * @author Kenton Hamaluik
  */
 class Include extends Decorator
