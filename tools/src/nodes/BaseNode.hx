@@ -8,12 +8,12 @@ class BaseNode extends Entity
 	{
 		super( { name : name } );
 		
-		NodeManager.Add(this);
+		Core.nodeManager.addNode(this);
 	}
 	
 	override function destroy(?_fromparent : Null<Bool>) : Void
 	{
-		NodeManager.Remove(this);
+		Core.nodeManager.removeNode(this);
 		super.destroy(true);
 	}
 	

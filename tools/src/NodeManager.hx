@@ -1,43 +1,48 @@
 package;
 
+import luxe.Entity;
+import luxe.Input.MouseEvent;
 import nodes.BaseNode;
-class NodeManager
+class NodeManager extends Entity
 {
 	private static var m_instance : NodeManager;
 	
 	private var m_nodes : Array<BaseNode>;
 	
-	private function new() 
+	public function new() 
 	{
 		m_nodes = new Array<BaseNode>();
+		
+		super( { name : Names.NODE_MANAGER } );
 	}
 	
-	public static function Instance() : NodeManager
-	{
-		if (m_instance == null)
-		{
-			m_instance = new NodeManager();
-		}
-		return m_instance;
-	}
-	
-	public static function Add(n : BaseNode) : Void
-	{
-		Instance().add(n);
-	}
-	
-	private function add(n : BaseNode) : Void
+	public function addNode(n : BaseNode) : Void
 	{
 		m_nodes.push(n);
 	}
 	
-	public static function Remove(n : BaseNode) : Void
-	{
-		Instance().remove(n);
-	}
-	
-	private function remove(n : BaseNode) : Void
+	public function removeNode(n : BaseNode) : Void
 	{
 		m_nodes.remove(n);
+	}
+	
+	override function update(dt : Float) : Void
+	{
+		
+	}
+	
+	override function onmousemove(e : MouseEvent) : Void
+	{
+		
+	}
+	
+	override function onmousedown(e : MouseEvent) : Void
+	{
+		
+	}
+	
+	override function onmouseup(e : MouseEvent) : Void
+	{
+		
 	}
 }

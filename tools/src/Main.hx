@@ -33,9 +33,16 @@ class Main extends luxe.Game
 	
 	override function onmousemove(e : MouseEvent)
 	{
-		if (snode.pointInside(e.pos))
-		{
-			snode.pos = e.pos.clone();
-		}
+		
+	}
+	
+	override function onmousedown(e : MouseEvent)
+	{
+		
+	}
+	
+	override function onmouseup(e : MouseEvent)
+	{
+		
 	}
 }

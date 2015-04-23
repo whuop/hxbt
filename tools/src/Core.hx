@@ -6,11 +6,13 @@ package;
  */
 class Core
 {
+	public static var nodeManager;
+	
 	
 	public static function Initialize()
 	{
 		Logger.Instance();
-		NodeManager.Instance();
+		nodeManager = new NodeManager();
 	}
 	
 	private function new() : Void { }
