@@ -1,4 +1,4 @@
-package hxbt;
+package hxbt.composites;
 import hxbt.Behavior.Status;
 
 /**
