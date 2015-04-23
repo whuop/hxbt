@@ -1,0 +1,9 @@
+language: haxe
+haxe:
+  - "3.2.0-rc.2"
+install:
+  - haxelib install buddy
+hxml:
+  - behaviour.hxml
+script:
+  - neko bin/behaviour.n
