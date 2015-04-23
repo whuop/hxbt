@@ -31,6 +31,7 @@ class BoxNodeDecorator extends NodeDecorator
 	
 	override function destroy() : Void
 	{
+		m_decorated.destroy();
 		super.destroy();
 	}
 	
@@ -52,6 +53,7 @@ class BoxNodeDecorator extends NodeDecorator
 	
 	override function setPos(v : Vector) : Void
 	{
+		m_decorated.setPos(v);
 		box.transform.pos = v.clone();
 	}
 	

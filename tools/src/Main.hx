@@ -5,6 +5,7 @@ import luxe.Color;
 import luxe.Input;
 import nodes.BaseNode;
 import nodes.BoxNodeDecorator;
+import nodes.TextDecorator;
 
 class Main extends luxe.Game 
 {
@@ -18,8 +19,10 @@ class Main extends luxe.Game
 		//cnode = new CircleNode('cnode', 220, 100, 50, new Color(63, 0, 0, 1));
 		//snode = new SequenceNode('sequence', 100, 100);
 		
-		node = new BoxNodeDecorator(new BaseNode());
+		node = new TextDecorator( new BoxNodeDecorator(new BaseNode()) );
 		node.setPos(new Vector(100, 100));
+		
+		Core.nodeManager.addNode(node);
 	}
 
 	override function onkeyup(e:KeyEvent) 
