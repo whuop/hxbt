@@ -29,9 +29,13 @@ class BehaviorTree
 		m_counter = this.period;
 	}
 	
-	public function set(root : Behavior, context : Dynamic) : Void
+	public function setRoot(root : Behavior) : Void
 	{
 		m_tree = root;
+	}
+	
+	public function setContext(context : Dynamic) : Void
+	{
 		m_context = context;
 	}
 	

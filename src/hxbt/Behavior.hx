@@ -17,6 +17,7 @@ enum Status
  * A composite is a branch in the behavior tree.
  * @author Kristian Brodal
  */
+ @:keepSub
 class Behavior
 {
 	
