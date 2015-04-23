@@ -1,4 +1,5 @@
 package nodes;
+
 import luxe.Entity;
 import luxe.Vector;
 
@@ -8,13 +9,15 @@ class BaseNode extends Entity
 	{
 		super( { name : name } );
 		
-		Core.nodeManager.addNode(this);
+		cast(Luxe.scene.entities.get(Names.NODE_MANAGER), NodeManager).addNode(this);
 	}
 	
-	override function destroy(?_fromparent : Null<Bool>) : Void
+	override function ondestroy() : Void
 	{
-		Core.nodeManager.removeNode(this);
-		super.destroy(true);
+		var nodeManager = Luxe.scene.entities.get(Names.NODE_MANAGER);
+		
+		if (nodeManager != null)
+			cast(nodeManager, NodeManager).removeNode(this);
 	}
 	
 	public function pointInside(p : Vector) : Bool

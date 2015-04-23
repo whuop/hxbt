@@ -9,6 +9,9 @@ class NodeManager extends Entity
 	
 	private var m_nodes : Array<BaseNode>;
 	
+	private var m_draggedNode : BaseNode;
+	private var m_hoveredNode : BaseNode;
+	
 	public function new() 
 	{
 		m_nodes = new Array<BaseNode>();
@@ -28,21 +31,42 @@ class NodeManager extends Entity
 	
 	override function update(dt : Float) : Void
 	{
-		
+		if (m_draggedNode != null)
+		{
+			m_draggedNode.pos = Luxe.screen.cursor.pos.clone();
+		}
 	}
 	
 	override function onmousemove(e : MouseEvent) : Void
 	{
-		
+		var hoveredNode = null;
+		for (node in m_nodes)
+		{
+			if (node.pointInside(e.pos))
+			{
+				if (node != m_hoveredNode)
+				{
+					node.events.fire(Evts.NODE_ON_ENTER);
+					
+					if (m_hoveredNode != null)
+						m_hoveredNode.events.fire(Evts.NODE_ON_EXIT);
+					m_hoveredNode = node;
+				}
+				break;
+			}
+		}
 	}
 	
 	override function onmousedown(e : MouseEvent) : Void
 	{
-		
+		if (m_hoveredNode != null)
+		{
+			m_draggedNode = m_hoveredNode;
+		}
 	}
 	
 	override function onmouseup(e : MouseEvent) : Void
 	{
-		
+		m_draggedNode = null;
 	}
 }
