@@ -1,5 +1,6 @@
 package sample;
 
+#if !behaviour
 import hxbt.Behavior;
 import luxe.Vector;
 import Main.ActorContext;
@@ -29,3 +30,4 @@ class WalkThroughDoorBehaviour extends Behavior {
 		return Status.RUNNING;
 	}
 }
+#end

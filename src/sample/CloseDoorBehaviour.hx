@@ -1,5 +1,6 @@
 package sample;
 
+#if !behaviour
 import hxbt.Behavior;
 import Main.ActorContext;
 import sample.Door;
@@ -21,3 +22,4 @@ class CloseDoorBehaviour extends Behavior {
 		return Status.RUNNING;
 	}
 }
+#end

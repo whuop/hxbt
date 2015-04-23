@@ -18,7 +18,7 @@ class IncludeBehaviour extends BuddySuite
 	{
 		var tree:BehaviorTree = new BehaviorTree();
 		var behaviour = new MockBehaviour();
-		tree.set(behaviour, null);
+		tree.setRoot(behaviour);
 		var decorator:Include = new Include(tree);
 
 		describe("Using an include decorator", {

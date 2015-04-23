@@ -1,5 +1,6 @@
 package sample;
 
+#if !behaviour
 import hxbt.Behavior;
 
 class BeLazyBehaviour extends Behavior {
@@ -13,3 +14,4 @@ class BeLazyBehaviour extends Behavior {
 		return Status.RUNNING;
 	}
 }
+#end

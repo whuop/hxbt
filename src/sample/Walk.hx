@@ -1,5 +1,6 @@
 package sample;
 
+#if !behaviour
 import luxe.Sprite;
 import luxe.Component;
 import luxe.Vector;
@@ -22,3 +23,4 @@ class Walk extends Component {
 		}
 	}
 }
+#end

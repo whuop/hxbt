@@ -1,5 +1,6 @@
 package sample;
 
+#if !behaviour
 import luxe.Sprite;
 import luxe.Component;
 import luxe.Vector;
@@ -66,3 +67,4 @@ class Door extends Component {
 		}
 	}
 }
+#end
