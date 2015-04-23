@@ -63,6 +63,10 @@ class SelectorBehaviour extends BuddySuite
 
 				selector.status.should.be(Status.FAILURE);
 			});
+			it("should invalidate all its children when it terminates", {
+				behaviourA.status.should.be(Status.INVALID);
+				behaviourB.status.should.be(Status.INVALID);
+			});
 		});
 	}
 }
