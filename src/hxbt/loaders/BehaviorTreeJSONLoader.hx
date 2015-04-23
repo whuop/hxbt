@@ -49,13 +49,35 @@ class BehaviorTreeJSONLoader
 	//	Returns constructed tree if successful, returns null if unsuccessful.
 	public static function FromJSONString(JSON : String, treeName : String) : BehaviorTree
 	{
-		return null;
+		return FromJSONObject(haxe.Json.parse(JSON), treeName);
 	}
 	
 	//	Constructs the behavior tree 'treeName' defined in the JSON file 'JSON'.
 	//	Returns constructed tree if successful, returns null if unsuccessful.
 	public static function FromJSONObject(JSON : Dynamic, treeName : String) : BehaviorTree
 	{
-		return null;
+		// for later
+		var tree:Dynamic;
+
+		// find the desired tree
+		for(_tree in JSON.trees)
+		{
+			if(_tree.name == treeName)
+			{
+				// found it!
+				tree = _tree;
+
+				// finish processing
+				break;
+			}
+		}
+
+		// make sure it was found
+		if(tree == null)
+		{
+			return null;
+		}
+
+		// todo...
 	}
 }
