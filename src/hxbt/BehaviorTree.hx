@@ -7,9 +7,9 @@ package hxbt;
  */
 class BehaviorTree
 {
-	//	The frequency decides how often the behavior tree should update.
-	//	Frequency of 0.2 will make the tree update 5 times a second.
-	public var frequency(default, default) : Float;
+	//	The period decides how often the behavior tree should update.
+	//	Period of 0.2 will make the tree update 5 times a second.
+	public var period(default, default) : Float;
 	
 	//	Root of the behavior tree.
 	private var m_tree : Behavior;
@@ -21,12 +21,12 @@ class BehaviorTree
 	//	When counter reaches 0 tree is updated.
 	private var m_counter : Float;
 
-	public function new() 
+	public function new(?period:Float) 
 	{
 		//	Will make the tree run 5 times a second.
 		//	Used as default for now
-		this.frequency = 0.2;
-		m_counter = this.frequency;
+		this.period = period == null ? 0.2 : period;
+		m_counter = this.period;
 	}
 	
 	public function set(root : Behavior, context : Dynamic) : Void
@@ -38,12 +38,12 @@ class BehaviorTree
 	public function update(dt : Float) : Void
 	{
 		m_counter -= dt;
-		if (m_counter < 0)
+		while (m_counter < 0)
 		{
-			m_counter = this.frequency;
+			m_counter += this.period;
 			if (m_tree != null)
 			{
-				m_tree.tick(m_context, this.frequency);
+				m_tree.tick(m_context, this.period);
 			}
 		}
 	}
