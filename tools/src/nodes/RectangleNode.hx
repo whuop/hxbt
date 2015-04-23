@@ -1,4 +1,5 @@
 package nodes;
+import luxe.Vector;
 import luxe.Color;
 import phoenix.geometry.QuadGeometry;
 
@@ -23,5 +24,10 @@ class RectangleNode extends BaseNode
 	override function update(dt : Float) : Void
 	{
 		super.update(dt);
+	}
+	
+	override function pointInside(p : Vector) : Bool
+	{
+		if (
 	}
 }
