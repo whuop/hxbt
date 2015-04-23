@@ -21,9 +21,9 @@ class BehaviorTreeBehaviour extends BuddySuite
 
 		describe("Using a behavior tree", {
 			it("should wait until the correct time to tick its root", {
-				tree.update(0.1);
+				tree.update(tree.period / 2);
 				behavior.m_initializedCalled.should.be(0);
-				tree.update(0.1);
+				tree.update(tree.period / 2);
 				behavior.m_initializedCalled.should.be(1);
 			});
 		});
