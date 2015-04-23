@@ -2,6 +2,7 @@ package;
 
 import luxe.Entity;
 import luxe.Input.MouseEvent;
+import luxe.Vector;
 import nodes.BaseNode;
 class NodeManager extends Entity
 {
@@ -11,10 +12,12 @@ class NodeManager extends Entity
 	
 	private var m_draggedNode : BaseNode;
 	private var m_hoveredNode : BaseNode;
+	private var m_dragOffset : Vector;
 	
 	public function new() 
 	{
 		m_nodes = new Array<BaseNode>();
+		m_dragOffset = new Vector(0, 0);
 		
 		super( { name : Names.NODE_MANAGER } );
 	}
@@ -31,10 +34,7 @@ class NodeManager extends Entity
 	
 	override function update(dt : Float) : Void
 	{
-		if (m_draggedNode != null)
-		{
-			m_draggedNode.pos = Luxe.screen.cursor.pos.clone();
-		}
+		
 	}
 	
 	override function onmousemove(e : MouseEvent) : Void
@@ -55,6 +55,12 @@ class NodeManager extends Entity
 				break;
 			}
 		}
+		
+		if (m_draggedNode != null)
+		{
+			m_draggedNode.pos.x = e.pos.x + m_dragOffset.x;
+			m_draggedNode.pos.y = e.pos.y + m_dragOffset.y;
+		}
 	}
 	
 	override function onmousedown(e : MouseEvent) : Void
@@ -62,6 +68,8 @@ class NodeManager extends Entity
 		if (m_hoveredNode != null)
 		{
 			m_draggedNode = m_hoveredNode;
+			m_dragOffset.x = m_draggedNode.pos.x - e.pos.x;
+			m_dragOffset.y = m_draggedNode.pos.y - e.pos.y;
 		}
 	}
 	
