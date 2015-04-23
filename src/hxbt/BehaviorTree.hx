@@ -23,7 +23,7 @@ class BehaviorTree
 
 	public function new(?period:Float) 
 	{
-		//	Will make the tree run 5 times a second.
+		//	0.2 will make the tree run 5 times a second.
 		//	Used as default for now
 		this.period = period == null ? 0.2 : period;
 		m_counter = this.period;
@@ -38,7 +38,7 @@ class BehaviorTree
 	public function update(dt : Float) : Void
 	{
 		m_counter -= dt;
-		while (m_counter < 0)
+		while (m_counter <= 0)
 		{
 			m_counter += this.period;
 			if (m_tree != null)
