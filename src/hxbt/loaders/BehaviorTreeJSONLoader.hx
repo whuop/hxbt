@@ -6,24 +6,34 @@ import hxbt.BehaviorTree;
  * with a very simple structure.
  * The structure of the behavior tree JSON is the following:
 
-	{
-		"tree_name" : 
-		[
-			"hxbt.selector" : 
-			[
-				"hxbt.sequence" : 
+{
+	"trees" :
+	[
+		{
+			"name" : "my.first.tree",
+			"tree" : 
+			{
+				"hxbt.selector" : 
 				[
-					"package.behavior0" : [],
-					"package.behavior1" : []
-				],
-				"hxbt.sequence" : 
-				[
-					"package.behavior2" : [],
-					"package.behavior3" : []
+					{
+						"hxbt.sequence" : 
+						[
+							{ "package.behavior0" : [] },
+							{ "package.behavior1" : [] }
+						]
+					},
+					{
+						"hxbt.sequence" : 
+						[
+							{ "package.behavior2" : [] },
+							{ "package.behavior3" : [] }
+						]
+					}
 				]
-			]
-		]
-	}
+			}
+		}
+	]
+}
 	 
  * @author Kristian Brodal
  */

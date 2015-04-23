@@ -1,6 +1,6 @@
 package tests;
 import hxbt.Behavior;
-import hxbt.Selector;
+import hxbt.composites.Selector;
 
 /**
  * ...
