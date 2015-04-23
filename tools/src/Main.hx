@@ -30,4 +30,12 @@ class Main extends luxe.Game
 	override function update(dt:Float) 
 	{
 	}
+	
+	override function onmousemove(e : MouseEvent)
+	{
+		if (snode.pointInside(e.pos))
+		{
+			snode.pos = e.pos.clone();
+		}
+	}
 }

@@ -34,6 +34,8 @@ class SequenceNode extends RectangleNode
 		});
 		
 		this.pos = new Vector(x, y);
+		
+		Logger.Log('/ Create / Sequence Node');
 	}
 	
 }

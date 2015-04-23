@@ -16,8 +16,8 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="C:\Users\Kristian\Documents\GitHub\luxe" />
-    <class path="C:\HaxeToolkit\haxe\lib\hxcpp\3,2,81" />
-    <class path="C:\Users\Kristian\Documents\GitHub\snow-new" />
+    <class path="C:\HaxeToolkit\haxe\lib\hxcpp\3,2,37" />
+    <class path="C:\Users\Kristian\Documents\GitHub\snow" />
     <class path="src" />
     <class path="bin\windows.build\haxe" />
   </classpaths>

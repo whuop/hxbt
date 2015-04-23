@@ -5,8 +5,10 @@ import phoenix.geometry.QuadGeometry;
 
 class RectangleNode extends BaseNode
 {
-
 	public var box(default, default) : QuadGeometry;
+	
+	private var m_width : Int;
+	private var m_height : Int;
 	
 	public function new(_name : String, _width : Int, _height : Int, _color : Color) 
 	{
@@ -19,6 +21,8 @@ class RectangleNode extends BaseNode
 			color : _color
 		});
 		box.transform.parent = this.transform;
+		m_width = _width;
+		m_height = _height;
 	}
 	
 	override function update(dt : Float) : Void
@@ -28,6 +32,12 @@ class RectangleNode extends BaseNode
 	
 	override function pointInside(p : Vector) : Bool
 	{
-		if (
+		if (p.x >= this.pos.x && p.x <= this.pos.x + m_width &&
+			p.y >= this.pos.y && p.y <= this.pos.y + m_height)
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }
