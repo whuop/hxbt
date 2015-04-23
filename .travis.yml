@@ -3,7 +3,6 @@ haxe:
   - "3.1.3"
 install:
   - haxelib install buddy
-hxml:
-  - behaviour.hxml
 script:
-  - neko bin/behaviour.n
+  - haxe behaviour.hxml
+  - neko behaviour.n
