@@ -16,7 +16,7 @@ class Invert extends Decorator
 	
 	override function update(context : Dynamic, dt : Float) : Status
 	{
-		var childResult : Status = m_child.update(context, dt);
+		var childResult : Status = m_child.tick(context, dt);
 		if(childResult == Status.SUCCESS) {
 			return Status.FAILURE;
 		}

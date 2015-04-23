@@ -6,6 +6,7 @@ import hxbt.Behavior.Status;
  * Keeps going through behavior until all behaviors have returned SUCCESS.
  * If a single behavior returns FAILURE, the whole sequence fails.
  * @author Kristian Brodal
+ * @author Kenton Hamaluik
  */
 class Sequence extends Composite
 {
@@ -33,27 +34,22 @@ class Sequence extends Composite
 	
 	override function update(context : Dynamic, dt : Float) : Status
 	{
-		//	Keep looping until a child says it is running.
-		while (true)
-		{
-			m_currentChild = m_children[m_currentIndex];
-			var s = m_currentChild.tick(context, dt);
-			
-			//	If the child failed or is still running, early return.
-			if (s != Status.SUCCESS)
-			{
-				return s;
-			}	
-			m_currentIndex++;
-			//	If end of array hit the whole sequence succeeded.
-			if (m_currentIndex == m_children.length)
-			{
-				//	Reset index otherwise it will crash on next run through
-				m_currentIndex = 0;
-				return Status.SUCCESS;
-			}
-		}
+		// get the current child which is being evaluated
+		m_currentChild = m_children[m_currentIndex];
+		var s = m_currentChild.tick(context, dt);
 		
-		return Status.INVALID;
+		//	If the child failed or is still running, early return.
+		if (s != Status.SUCCESS)
+		{
+			return s;
+		}
+		m_currentIndex++;
+		//	If end of array hit the whole sequence succeeded.
+		if (m_currentIndex == m_children.length)
+		{
+			//	Reset index otherwise it will crash on next run through
+			m_currentIndex = 0;
+			return Status.SUCCESS;
+		}
 	}
 }
