@@ -51,5 +51,7 @@ class Sequence extends Composite
 			m_currentIndex = 0;
 			return Status.SUCCESS;
 		}
+		
+		return Status.RUNNING;
 	}
 }

@@ -1,7 +1,7 @@
 package tests;
 
 import hxbt.Behavior;
-import tests.BehaviorTest.TestBehavior;
+import tests.BehaviorTest.MockBehavior;
 
 /**
  * Behavior test runs through a behavior to make sure that 
@@ -12,7 +12,7 @@ class BehaviorTest
 {
 	public function new() 
 	{
-		var behavior = new TestBehavior();
+		var behavior = new MockBehavior();
 		behavior.tick(null);
 		trace('/----------- BEHAVIOR TEST -----------/');
 		trace('Initialized called: ${behavior.m_initializedCalled}');
@@ -24,7 +24,7 @@ class BehaviorTest
 }
 
 
-class TestBehavior extends Behavior
+class MockBehavior extends Behavior
 {
 	public var m_initializedCalled = 0;
 	public var m_terminateCalled = 0;

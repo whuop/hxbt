@@ -16,7 +16,6 @@ class Parallel extends Composite
 	
 	override function onInitialize(context : Dynamic)
 	{
-		m_currentIndex = 0;
 	}
 	
 	override function onTerminate(context : Dynamic, status : Status)

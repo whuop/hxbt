@@ -1,0 +1,5 @@
+-D behaviour
+-lib buddy
+-main behaviour.BehaviourMain
+-cp src
+-neko bin/behaviour.n

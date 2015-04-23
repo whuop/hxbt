@@ -36,6 +36,7 @@ import hxbt.BehaviorTree;
 }
 	 
  * @author Kristian Brodal
+ * @author Kenton Hamaluik
  */
 class BehaviorTreeJSONLoader
 {
@@ -56,28 +57,6 @@ class BehaviorTreeJSONLoader
 	//	Returns constructed tree if successful, returns null if unsuccessful.
 	public static function FromJSONObject(JSON : Dynamic, treeName : String) : BehaviorTree
 	{
-		// for later
-		var tree:Dynamic;
-
-		// find the desired tree
-		for(_tree in JSON.trees)
-		{
-			if(_tree.name == treeName)
-			{
-				// found it!
-				tree = _tree;
-
-				// finish processing
-				break;
-			}
-		}
-
-		// make sure it was found
-		if(tree == null)
-		{
-			return null;
-		}
-
-		// todo...
+		return null;
 	}
 }

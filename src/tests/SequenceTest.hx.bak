@@ -11,9 +11,9 @@ class SequenceTest
 	public function new() 
 	{
 		var s = new Sequence();
-		s.add(new TestBehavior("0"));
-		s.add(new TestBehavior("1"));
-		s.add(new TestBehavior("2"));
+		s.add(new MockBehavior("0"));
+		s.add(new MockBehavior("1"));
+		s.add(new MockBehavior("2"));
 		
 		trace('/----------- SEQUENCE TEST -----------/');
 		s.tick(null);
@@ -21,7 +21,7 @@ class SequenceTest
 	}	
 }
 
-class TestBehavior extends Behavior
+class MockBehavior extends Behavior
 {
 	public var m_name : String;
 	

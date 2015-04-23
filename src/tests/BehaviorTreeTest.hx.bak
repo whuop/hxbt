@@ -2,7 +2,7 @@ package tests;
 import hxbt.Behavior;
 import hxbt.Behavior.Status;
 import hxbt.BehaviorTree;
-import hxbt.Sequence;
+import hxbt.composites.Sequence;
 import tests.BehaviorTreeTest.TreeContext;
 
 /**
@@ -25,9 +25,9 @@ class BehaviorTreeTest
 		m_tree = new BehaviorTree();
 		
 		var sequence = new Sequence();
-		sequence.add(new TestBehavior());
-		sequence.add(new TestBehavior());
-		sequence.add(new TestBehavior());
+		sequence.add(new MockBehavior());
+		sequence.add(new MockBehavior());
+		sequence.add(new MockBehavior());
 		
 		m_tree.set(sequence, { string : 'YourNameHere', forcedStatus : Status.SUCCESS } );
 	}
@@ -38,7 +38,7 @@ class BehaviorTreeTest
 	}
 }
 
-class TestBehavior extends Behavior
+class MockBehavior extends Behavior
 {
 	public function new()
 	{

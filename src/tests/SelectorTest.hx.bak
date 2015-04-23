@@ -21,9 +21,9 @@ class SelectorTest
 	{
 		trace('Run / FAILURE / SUCCESS / SUCCESS');
 		var s = new Selector();
-		s.add(new TestBehavior("0", Status.FAILURE));
-		s.add(new TestBehavior("1", Status.SUCCESS));
-		s.add(new TestBehavior("2", Status.SUCCESS));
+		s.add(new MockBehavior("0", Status.FAILURE));
+		s.add(new MockBehavior("1", Status.SUCCESS));
+		s.add(new MockBehavior("2", Status.SUCCESS));
 		s.tick(null);
 	}
 	
@@ -31,9 +31,9 @@ class SelectorTest
 	{
 		trace('Run / FAILURE / FAILURE / SUCCESS');
 		var s = new Selector();
-		s.add(new TestBehavior("0", Status.FAILURE));
-		s.add(new TestBehavior("1", Status.FAILURE));
-		s.add(new TestBehavior("2", Status.SUCCESS));
+		s.add(new MockBehavior("0", Status.FAILURE));
+		s.add(new MockBehavior("1", Status.FAILURE));
+		s.add(new MockBehavior("2", Status.SUCCESS));
 		s.tick(null);
 	}
 	
@@ -41,14 +41,14 @@ class SelectorTest
 	{
 		trace('Run / SUCCESS / SUCCESS / SUCCESS');
 		var s = new Selector();
-		s.add(new TestBehavior("0", Status.SUCCESS));
-		s.add(new TestBehavior("1", Status.SUCCESS));
-		s.add(new TestBehavior("2", Status.SUCCESS));
+		s.add(new MockBehavior("0", Status.SUCCESS));
+		s.add(new MockBehavior("1", Status.SUCCESS));
+		s.add(new MockBehavior("2", Status.SUCCESS));
 		s.tick(null);
 	}
 }
 
-class TestBehavior extends Behavior
+class MockBehavior extends Behavior
 {
 	public var m_name : String;
 	public var m_return : Status;

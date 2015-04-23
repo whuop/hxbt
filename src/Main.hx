@@ -1,5 +1,6 @@
 package;
 
+#if !behaviour
 import luxe.Input;
 import tests.BehaviorTreeTest;
 
@@ -26,3 +27,4 @@ class Main extends luxe.Game
 		behaviorTreeTest.update(dt);
 	}
 }
+#end
