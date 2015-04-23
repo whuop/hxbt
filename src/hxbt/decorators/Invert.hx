@@ -16,11 +16,18 @@ class Invert extends Decorator
 	
 	override function update(context : Dynamic, dt : Float) : Status
 	{
+		if(m_child == null)
+		{
+			throw "Inverter requires child to not be null!";
+		}
+
 		var childResult : Status = m_child.tick(context, dt);
-		if(childResult == Status.SUCCESS) {
+		if(childResult == Status.SUCCESS)
+		{
 			return Status.FAILURE;
 		}
-		else if(childResult == Status.FAILURE) {
+		else if(childResult == Status.FAILURE)
+		{
 			return Status.SUCCESS;
 		}
 		return childResult;
