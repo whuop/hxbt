@@ -46,10 +46,10 @@ class NodeManager extends Entity
 			{
 				if (node != m_hoveredNode)
 				{
-					node.events.fire(Evts.NODE_ON_ENTER);
+					//node.events.fire(Evts.NODE_ON_ENTER);
 					
-					if (m_hoveredNode != null)
-						m_hoveredNode.events.fire(Evts.NODE_ON_EXIT);
+					//if (m_hoveredNode != null)
+						//m_hoveredNode.events.fire(Evts.NODE_ON_EXIT);
 					m_hoveredNode = node;
 				}
 				break;
@@ -58,8 +58,7 @@ class NodeManager extends Entity
 		
 		if (m_draggedNode != null)
 		{
-			m_draggedNode.pos.x = e.pos.x + m_dragOffset.x;
-			m_draggedNode.pos.y = e.pos.y + m_dragOffset.y;
+			m_draggedNode.setPos(e.pos.add(m_dragOffset));
 		}
 	}
 	
@@ -68,8 +67,7 @@ class NodeManager extends Entity
 		if (m_hoveredNode != null)
 		{
 			m_draggedNode = m_hoveredNode;
-			m_dragOffset.x = m_draggedNode.pos.x - e.pos.x;
-			m_dragOffset.y = m_draggedNode.pos.y - e.pos.y;
+			m_dragOffset = m_draggedNode.getPos().subtract(e.pos);
 		}
 	}
 	

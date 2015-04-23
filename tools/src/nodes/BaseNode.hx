@@ -1,27 +1,35 @@
 package nodes;
 
-import luxe.Entity;
+import luxe.Transform;
 import luxe.Vector;
 
-class BaseNode extends Entity
+class BaseNode
 {
-	public function new(name : String) 
+	public function new() 
 	{
-		super( { name : name } );
-		
-		cast(Luxe.scene.entities.get(Names.NODE_MANAGER), NodeManager).addNode(this);
+		//cast(Luxe.scene.entities.get(Names.NODE_MANAGER), NodeManager).addNode(this);
 	}
 	
-	override function ondestroy() : Void
+	public function destroy() : Void
 	{
-		var nodeManager = Luxe.scene.entities.get(Names.NODE_MANAGER);
+		//var nodeManager = Luxe.scene.entities.get(Names.NODE_MANAGER);
 		
-		if (nodeManager != null)
-			cast(nodeManager, NodeManager).removeNode(this);
+		//if (nodeManager != null)
+			//cast(nodeManager, NodeManager).removeNode(this);
 	}
 	
 	public function pointInside(p : Vector) : Bool
 	{
 		return false;
+	}
+	
+	public function setPos( v : Vector ) : Void
+	{
+		
+	}
+	
+	public function getPos() : Vector
+	{
+		return null;
 	}
 }
