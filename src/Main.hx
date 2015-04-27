@@ -10,6 +10,7 @@ import luxe.Input;
 import luxe.Sprite;
 import luxe.Vector;
 import luxe.Color;
+import luxe.resource.Resource;
 
 import sample.Walk;
 import sample.Door;
@@ -51,9 +52,11 @@ class Main extends luxe.Game
 		});
 		door.add(new Door(16, 2));
 
-		Luxe.loadJSON("assets/behavior_trees.json", function(res) {
+		var load = Luxe.resources.load_json("assets/behavior_trees.json");
+
+		load.then(function(json:JSONResource){
 			try {
-				behaviourTree = hxbt.loaders.BehaviorTreeJSONLoader.FromJSONObject(res.json, "WalkThroughDoorAndStop");
+				behaviourTree = hxbt.loaders.BehaviorTreeJSONLoader.FromJSONObject(json.asset.json, "WalkThroughDoorAndStop");
 				behaviourTree.setContext({
 					actor: actor,
 					door: door
