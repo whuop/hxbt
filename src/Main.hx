@@ -1,12 +1,10 @@
 package;
 
-import hxbt.composites.Selector;
-import luxe.Input;
-
 import hxbt.Behavior;
 import hxbt.Behavior.Status;
 import hxbt.BehaviorTree;
 import hxbt.composites.Sequence;
+import hxbt.composites.Selector;
 
 class Blackboard
 {
@@ -31,7 +29,6 @@ class SimpleBehavior extends Behavior<Blackboard>
 		return Status.SUCCESS; 
 	}
 	
-	
 	override function onInitialize( context : Blackboard) : Void 
 	{ 
 		trace('Initializing ${context.name}');
@@ -43,35 +40,36 @@ class SimpleBehavior extends Behavior<Blackboard>
 	}
 }
 
-class Main extends luxe.Game 
+class Main
 {
-	var behaviorTree:BehaviorTree<Blackboard>;
+	
 
-	override function ready() 
+	static function main() 
 	{
-		behaviorTree = new BehaviorTree<Blackboard>();
-		behaviorTree.period = 1.0 / 60.0; //	Make it update roughly every frame.
-		
+		//	Create the behavior tree
+		var behaviorTree = new BehaviorTree<Blackboard>();
+		//	Make it update roughly every frame.
+		var dt = 1.0 / 60.0;
+		behaviorTree.period = dt; 
+		//	Set which blackboard it should use.
 		behaviorTree.setContext(new Blackboard('SimpleBehavior'));
 		
+		//	Root element of the tree, is usually a selector.
 		var root = new Selector<Blackboard>();
-		var sequence = new Sequence<Blackboard>();
-		sequence.add(new SimpleBehavior());
-		root.add(sequence);
-		
 		behaviorTree.setRoot(root);
-	}
-
-	override function onkeyup(e:KeyEvent) 
-	{
-		if(e.keycode == Key.escape)
-			Luxe.shutdown();
-	}
-
-	override function update(dt:Float) 
-	{
-		if(behaviorTree != null) {
+		//	After that, add a sequence that goes through a number of behaviors
+		var sequence = new Sequence<Blackboard>();
+		root.add(sequence);
+		//	And lastly, add behaviors to that sequence
+		sequence.add(new SimpleBehavior());
+		
+		
+		//	Run the behavior tree 100 times just to test it.
+		var i = 0;
+		while (i < 100)
+		{
 			behaviorTree.update(dt);
+			i++;
 		}
 	}
 }

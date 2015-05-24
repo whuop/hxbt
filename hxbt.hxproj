@@ -2,33 +2,29 @@
 <project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie outputType="CustomBuild" />
+    <movie outputType="Application" />
     <movie input="" />
-    <movie path="" />
+    <movie path="bin" />
     <movie fps="0" />
     <movie width="0" />
     <movie height="0" />
     <movie version="1" />
     <movie minorVersion="0" />
-    <movie platform="flow" />
-    <movie background="#000000" />
+    <movie platform="C++" />
+    <movie background="#FFFFFF" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="C:\Users\Kristian\Documents\GitHub\luxe" />
-    <class path="C:\HaxeToolkit\haxe\lib\hxcpp\3,1,68" />
-    <class path="C:\Users\Kristian\Documents\GitHub\snow" />
     <class path="src" />
-    <class path="bin\windows.build\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="no-compilation&#xA;windows&#xA;arch-32&#xA;desktop&#xA;debug&#xA;hxcpp_static_std&#xA;snow_audio_openal&#xA;snow_input_sdl&#xA;snow_window_sdl&#xA;luxe_native&#xA;parcel_thread_disabled&#xA;snow_native&#xA;luxe&#xA;hxcpp&#xA;snow" />
+    <option directives="" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
-    <option mainClass="LuxeApp" />
+    <option mainClass="Main" />
     <option enabledebug="False" />
-    <option additional="-resource version@version&#xA;-resource build@build&#xA;-resource phoenix/defaults/shaders/vert.glsl@default.vert.glsl&#xA;-resource phoenix/defaults/shaders/frag.glsl@default.frag.glsl&#xA;-resource phoenix/defaults/shaders/frag.textured.glsl@default.frag.textured.glsl&#xA;-resource phoenix/defaults/shaders/frag.bitmapfont.glsl@default.frag.bitmapfont.glsl&#xA;-resource luxe/defaults/ui/tiny.ui.png@tiny.ui.png&#xA;-resource luxe/defaults/ui/tiny.button.png@tiny.button.png&#xA;-resource luxe/defaults/fonts/default.png@default.png&#xA;-resource luxe/defaults/fonts/default.fnt@default.fnt&#xA;-debug" />
+    <option additional="" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
@@ -40,17 +36,17 @@
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
-    <hidden path="obj" />
+    <!-- example: <hidden path="..." /> -->
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>"$(CompilerPath)/haxelib" run flow build $(TargetBuild) --$(BuildConfig)</preBuildCommand>
+  <preBuildCommand />
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
     <option testMovie="Custom" />
-    <option testMovieCommand="" />
+    <option testMovieCommand="run.bat $(BuildConfig)" />
   </options>
   <!-- Plugin storage -->
   <storage />
