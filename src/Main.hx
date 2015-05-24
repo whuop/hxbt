@@ -1,71 +1,65 @@
 package;
 
-#if !behaviour
+import hxbt.composites.Selector;
+import luxe.Input;
+
 import hxbt.Behavior;
 import hxbt.Behavior.Status;
 import hxbt.BehaviorTree;
 import hxbt.composites.Sequence;
-import luxe.Component;
-import luxe.Input;
-import luxe.Sprite;
-import luxe.Vector;
-import luxe.Color;
-import luxe.resource.Resource;
 
-import sample.Walk;
-import sample.Door;
+class Blackboard
+{
+	public var name : String;
+	
+	public function new(_name) : Void
+	{
+		this.name = _name;
+	}
+}
 
-import sample.WalkToDoorBehaviour;
-import sample.OpenDoorBehaviour;
-import sample.WalkThroughDoorBehaviour;
-import sample.CloseDoorBehaviour;
-import sample.BeLazyBehaviour;
-
-typedef ActorContext = {
-	var actor:Sprite;
-	var door:Sprite;
+class SimpleBehavior extends Behavior<Blackboard>
+{
+	public function new() : Void
+	{
+		super();
+	}
+	
+	override function update( context : Blackboard, dt : Float) : Status 
+	{ 
+		trace('Updating ${context.name}');
+		return Status.SUCCESS; 
+	}
+	
+	
+	override function onInitialize( context : Blackboard) : Void 
+	{ 
+		trace('Initializing ${context.name}');
+	}
+	
+	override function onTerminate(context : Blackboard, status : Status) : Void 
+	{ 
+		trace('Terminating ${context.name}');
+	}
 }
 
 class Main extends luxe.Game 
 {
-	var actor:Sprite;
-	var door:Sprite;
-	var behaviourTree:BehaviorTree;
+	var behaviorTree:BehaviorTree<Blackboard>;
 
 	override function ready() 
 	{
-		// create our dude who's going to walk around
-		var actor:Sprite = new Sprite({
-			pos: new Vector((Luxe.screen.w / 2) - 128, Luxe.screen.h / 2),
-			size: new Vector(16, 16),
-			color: new Color(0.9, 0.9, 0.9, 1),
-			origin: new Vector(8, 16)
-		});
-		actor.add(new Walk(128));
-
-		// create a door for him to walk through
-		door = new Sprite({
-			pos: new Vector((Luxe.screen.w / 2) + 128, Luxe.screen.h / 2),
-			size: new Vector(16, 32),
-			color: new Color(0.5, 0.25, 0, 1),
-			origin: new Vector(8, 32)
-		});
-		door.add(new Door(16, 2));
-
-		var load = Luxe.resources.load_json("assets/behavior_trees.json");
-
-		load.then(function(json:JSONResource){
-			try {
-				behaviourTree = hxbt.loaders.BehaviorTreeJSONLoader.FromJSONObject(json.asset.json, "WalkThroughDoorAndStop");
-				behaviourTree.setContext({
-					actor: actor,
-					door: door
-				});
-			}
-			catch(err:String) {
-				trace("ERROR: " + err);
-			}
-		});
+		behaviorTree = new BehaviorTree<Blackboard>();
+		behaviorTree.period = 1.0 / 60.0; //	Make it update roughly every frame.
+		
+		behaviorTree.setContext(new Blackboard('SimpleBehavior'));
+		
+		var root = new Selector<Blackboard>();
+		var sequence = new Sequence<Blackboard>();
+		sequence.add(new SimpleBehavior());
+		root.add(sequence);
+		
+		behaviorTree.setRoot(root);
 	}
 
 	override function onkeyup(e:KeyEvent) 
@@ -76,11 +70,8 @@ class Main extends luxe.Game
 
 	override function update(dt:Float) 
 	{
-		if(behaviourTree != null) {
-			behaviourTree.period = dt; // make it update every frame
-			behaviourTree.update(dt);
+		if(behaviorTree != null) {
+			behaviorTree.update(dt);
 		}
 	}
 }
-
-#end

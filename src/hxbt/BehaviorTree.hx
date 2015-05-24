@@ -5,18 +5,18 @@ package hxbt;
  * as this has extra functionality.
  * @author Kristian Brodal
  */
-class BehaviorTree
+class BehaviorTree<T>
 {
 	//	The period decides how often the behavior tree should update.
 	//	Period of 0.2 will make the tree update 5 times a second.
 	public var period(default, default) : Float;
 	
 	//	Root of the behavior tree.
-	private var m_tree : Behavior;
+	private var m_tree : Behavior<T>;
 	
 	//	The context contains all the data needed to run
 	//	the different behaviors. Also called blackboard in some cases.
-	private var m_context : Dynamic;
+	private var m_context : T;
 	
 	//	When counter reaches 0 tree is updated.
 	private var m_counter : Float;
@@ -29,12 +29,12 @@ class BehaviorTree
 		m_counter = this.period;
 	}
 	
-	public function setRoot(root : Behavior) : Void
+	public function setRoot(root : Behavior<T>) : Void
 	{
 		m_tree = root;
 	}
 	
-	public function setContext(context : Dynamic) : Void
+	public function setContext(context : T) : Void
 	{
 		m_context = context;
 	}

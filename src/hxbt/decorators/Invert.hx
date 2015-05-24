@@ -9,14 +9,14 @@ import hxbt.Decorator;
  * otherwise returns what the child returns
  * @author Kenton Hamaluik
  */
-class Invert extends Decorator
+class Invert<T> extends Decorator<T>
 {
-	public function new(?child : Behavior) 
+	public function new(?child : Behavior<T>) 
 	{
 		super(child);
 	}
 	
-	override function update(context : Dynamic, dt : Float) : Status
+	override function update(context : T, dt : Float) : Status
 	{
 		if(m_child == null)
 		{

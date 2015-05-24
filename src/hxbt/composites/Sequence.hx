@@ -8,9 +8,9 @@ import hxbt.Behavior.Status;
  * @author Kristian Brodal
  * @author Kenton Hamaluik
  */
-class Sequence extends Composite
+class Sequence<T> extends Composite<T>
 {
-	private var m_currentChild : Behavior;
+	private var m_currentChild : Behavior<T>;
 	private var m_currentIndex : Int;
 	
 	
@@ -19,12 +19,12 @@ class Sequence extends Composite
 		super();
 	}
 	
-	override function onInitialize(context : Dynamic)
+	override function onInitialize(context : T)
 	{
 		m_currentIndex = 0;
 	}
 	
-	override function onTerminate(context : Dynamic, status : Status)
+	override function onTerminate(context : T, status : Status)
 	{
 		for(_child in m_children)
 		{
@@ -32,7 +32,7 @@ class Sequence extends Composite
 		}
 	}
 	
-	override function update(context : Dynamic, dt : Float) : Status
+	override function update(context : T, dt : Float) : Status
 	{
 		// get the current child which is being evaluated
 		m_currentChild = m_children[m_currentIndex];

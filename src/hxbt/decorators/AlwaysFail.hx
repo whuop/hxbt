@@ -7,14 +7,14 @@ import hxbt.Decorator;
  * Will always fail no matter whether the child succeeds or fails
  * @author Kenton Hamaluik
  */
-class AlwaysFail extends Decorator
+class AlwaysFail<T> extends Decorator<T>
 {
-	public function new(?child : Behavior) 
+	public function new(?child : Behavior<T>) 
 	{
 		super(child);
 	}
 	
-	override function update(context : Dynamic, dt : Float) : Status
+	override function update(context : T, dt : Float) : Status
 	{
 		return Status.FAILURE;
 	}

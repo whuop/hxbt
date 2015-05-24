@@ -6,9 +6,9 @@ import hxbt.Behavior.Status;
  * Similar to sequence, looks for one behavior that returns success and returns.
  * @author Kristian Brodal
  */
-class Selector extends Composite
+class Selector<T> extends Composite<T>
 {
-	private var m_currentChild : Behavior;
+	private var m_currentChild : Behavior<T>;
 	private var m_currentIndex : Int;
 	
 	
@@ -17,12 +17,12 @@ class Selector extends Composite
 		super();
 	}
 	
-	override function onInitialize(context : Dynamic)
+	override function onInitialize(context : T)
 	{
 		m_currentIndex = 0;
 	}
 	
-	override function onTerminate(context : Dynamic, status : Status)
+	override function onTerminate(context : T, status : Status)
 	{
 		for(_child in m_children)
 		{
@@ -30,7 +30,7 @@ class Selector extends Composite
 		}
 	}
 	
-	override function update(context : Dynamic, dt : Float) : Status
+	override function update(context : T, dt : Float) : Status
 	{
 		m_currentChild = m_children[m_currentIndex];
 		var s = m_currentChild.tick(context, dt);

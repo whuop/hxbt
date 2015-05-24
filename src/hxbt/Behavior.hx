@@ -18,7 +18,7 @@ enum Status
  * @author Kristian Brodal
  */
  @:keepSub
-class Behavior
+class Behavior<T>
 {
 	
 	public var status(default, default) : Status = Status.INVALID;
@@ -28,9 +28,9 @@ class Behavior
 		
 	}
 	
-	public function update( context : Dynamic, dt : Float) : Status { return Status.INVALID; }
-	public function onInitialize( context : Dynamic) : Void { }
-	public function onTerminate(context : Dynamic, status : Status) : Void { }
+	public function update( context : T, dt : Float) : Status { return Status.INVALID; }
+	public function onInitialize( context : T) : Void { }
+	public function onTerminate(context : T, status : Status) : Void { }
 	
 	public function tick(context : Dynamic, dt : Float) : Status 
 	{

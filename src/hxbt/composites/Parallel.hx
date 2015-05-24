@@ -7,18 +7,18 @@ import hxbt.Behavior.Status;
  * Will fail if any one of the children fail.
  * @author Kenton Hamaluik
  */
-class Parallel extends Composite
+class Parallel<T> extends Composite<T>
 {
 	public function new() 
 	{
 		super();
 	}
 	
-	override function onInitialize(context : Dynamic)
+	override function onInitialize(context : T)
 	{
 	}
 	
-	override function onTerminate(context : Dynamic, status : Status)
+	override function onTerminate(context : T, status : Status)
 	{
 		for(_child in m_children)
 		{
@@ -26,7 +26,7 @@ class Parallel extends Composite
 		}
 	}
 	
-	override function update(context : Dynamic, dt : Float) : Status
+	override function update(context : T, dt : Float) : Status
 	{
 		var allSucceeded:Bool = true;
 		for(child in m_children)

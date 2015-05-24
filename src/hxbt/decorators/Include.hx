@@ -8,17 +8,17 @@ import hxbt.Decorator;
  * Includes an entire behaviour tree as a child and runs it
  * @author Kenton Hamaluik
  */
-class Include extends Decorator
+class Include<T> extends Decorator<T>
 {
-	var m_childTree : BehaviorTree;
+	var m_childTree : BehaviorTree<T>;
 
-	public function new(childTree : BehaviorTree) 
+	public function new(childTree : BehaviorTree<T>) 
 	{
 		super();
 		m_childTree = childTree;
 	}
 	
-	override function update(context : Dynamic, dt : Float) : Status
+	override function update(context : T, dt : Float) : Status
 	{
 		m_childTree.update(dt);
 		return Status.SUCCESS;
