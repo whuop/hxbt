@@ -1,0 +1,11 @@
+{
+    "WalkThroughDoorAndStop": [{
+        "hxbt.sequence": [
+            { "sample.WalkToDoorBehaviour": [] },
+            { "sample.OpenDoorBehaviour": [] },
+            { "sample.WalkThroughDoorBehaviour": [] },
+            { "sample.CloseDoorBehaviour": [] },
+            { "sample.BeLazyBehaviour": [] }
+        ]
+    }]
+}

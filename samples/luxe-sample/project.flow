@@ -1,0 +1,25 @@
+{
+  project : {
+    name : 'empty',
+    version : '1.0.0',
+    author : 'whuop',
+
+    app : {
+      name : 'hxbt_luxe_sample',
+      package : 'com.whuop.hxbt',
+      main : 'Main'
+    },
+
+    build : {
+      dependencies : {
+        luxe : '*',
+		hxbt : '*'
+      }
+    },
+
+    files : {
+      config : 'config.json',
+      assets : 'assets/'
+    }
+  }
+}
