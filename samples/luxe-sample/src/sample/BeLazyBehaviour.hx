@@ -1,17 +1,16 @@
 package sample;
 
-#if !behaviour
 import hxbt.Behavior;
 
-class BeLazyBehaviour extends Behavior {
+class BeLazyBehaviour extends Behavior<Blackboard>
+{
 	public function new()
 	{
 		super();
 	}
 	
-	override function update(context : Dynamic, dt : Float) : Status
+	override function update(context : Blackboard, dt : Float) : Status
 	{
 		return Status.RUNNING;
 	}
 }
-#end

@@ -7,7 +7,12 @@ import hxbt.composites.Sequence;
 import hxbt.composites.Selector;
 import luxe.Game;
 import luxe.Sprite;
+import luxe.Vector;
 import sample.Blackboard;
+import luxe.Color;
+import sample.Walk;
+import sample.Door;
+
 
 class Main extends Game
 {
@@ -55,7 +60,7 @@ class Main extends Game
 	
 	public override function update( dt:Float ) 
 	{
-		m_behaviorTree.update(dt);
+		behaviorTree.update(dt);
     } //update
 
 }

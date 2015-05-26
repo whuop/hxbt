@@ -1,6 +1,5 @@
 package sample;
 
-#if !behaviour
 import luxe.Sprite;
 import luxe.Component;
 import luxe.Vector;
@@ -23,7 +22,7 @@ class Door extends Component {
 	var spr:Sprite;
 
 	var speed:Float = 32;
-	var targetWidth:Float = null;
+	var targetWidth:Float = 32;
 
 	public function new(?closedWidth:Float, ?openWidth:Float) {
 		super({ name: 'Door' });
@@ -67,4 +66,3 @@ class Door extends Component {
 		}
 	}
 }
-#end

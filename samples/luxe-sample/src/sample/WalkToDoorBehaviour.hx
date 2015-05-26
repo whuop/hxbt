@@ -1,11 +1,10 @@
 package sample;
 
-#if !behaviour
 import hxbt.Behavior;
 import luxe.Vector;
-import Main.ActorContext;
 
-class WalkToDoorBehaviour extends Behavior {
+class WalkToDoorBehaviour extends Behavior<Blackboard> 
+{
 	var targetPosition:Vector;
 
 	public function new()
@@ -13,12 +12,12 @@ class WalkToDoorBehaviour extends Behavior {
 		super();
 	}
 	
-	override function onInitialize(context : ActorContext) : Void
+	override function onInitialize(context : Blackboard) : Void
 	{
 		targetPosition = context.door.pos.clone();
 	}
 	
-	override function update(context : ActorContext, dt : Float) : Status
+	override function update(context : Blackboard, dt : Float) : Status
 	{
 		if(targetPosition.clone().subtract(context.actor.pos).length <= 16) {
 			cast(context.actor.get('Walk'), Walk).target = null;
@@ -30,4 +29,3 @@ class WalkToDoorBehaviour extends Behavior {
 		return Status.RUNNING;
 	}
 }
-#end

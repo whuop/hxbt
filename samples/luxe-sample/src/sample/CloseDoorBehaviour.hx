@@ -1,18 +1,17 @@
 package sample;
 
-#if !behaviour
 import hxbt.Behavior;
-import Main.ActorContext;
 import sample.Door;
 import sample.Door.DoorState;
 
-class CloseDoorBehaviour extends Behavior {
+class CloseDoorBehaviour extends Behavior<Blackboard> 
+{
 	public function new()
 	{
 		super();
 	}
 	
-	override function update(context : ActorContext, dt : Float) : Status
+	override function update(context : Blackboard, dt : Float) : Status
 	{
 		var door:Door = cast(context.door.get('Door'), Door);
 		door.close();
@@ -22,4 +21,3 @@ class CloseDoorBehaviour extends Behavior {
 		return Status.RUNNING;
 	}
 }
-#end
