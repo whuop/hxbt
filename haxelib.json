@@ -4,8 +4,9 @@
 	"license": "MIT",
 	"tags": [],
 	"description": "Haxe behavior tree implementation.",
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"releasenote": "",
-	"contributors": [ "Whuop", "Kenton Hamaluik"],
-	"dependencies": {}
+	"contributors": [ "Whuop"],
+	"dependencies": {},
+	"classPath" : "src"
 }

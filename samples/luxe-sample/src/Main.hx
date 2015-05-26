@@ -1,10 +1,5 @@
 package;
 
-import hxbt.Behavior;
-import hxbt.Behavior.Status;
-import hxbt.BehaviorTree;
-import hxbt.composites.Sequence;
-import hxbt.composites.Selector;
 import luxe.Game;
 import luxe.Sprite;
 import luxe.Vector;
@@ -12,6 +7,14 @@ import sample.Blackboard;
 import luxe.Color;
 import sample.Walk;
 import sample.Door;
+import hxbt.BehaviorTree;
+import hxbt.composites.Sequence;
+
+import sample.WalkToDoorBehaviour;
+import sample.OpenDoorBehaviour;
+import sample.WalkThroughDoorBehaviour;
+import sample.CloseDoorBehaviour;
+import sample.BeLazyBehaviour;
 
 
 class Main extends Game
@@ -40,8 +43,20 @@ class Main extends Game
 		});
 		door.add(new Door(16, 2));
 		
-		behaviorTree = new BehaviorTree<Blackboard>();
+		var bb = new Blackboard();
+		bb.actor = actor;
+		bb.door = door;
 
+		behaviorTree = new BehaviorTree<Blackboard>();
+		var sequence = new Sequence<Blackboard>();
+		behaviorTree.setRoot(sequence);
+		sequence.add(new WalkToDoorBehaviour( ));
+		sequence.add(new OpenDoorBehaviour( ));
+		sequence.add(new WalkThroughDoorBehaviour( ));
+		sequence.add(new CloseDoorBehaviour( ));
+		sequence.add(new BeLazyBehaviour( ));
+
+		behaviorTree.setContext(bb);
 		/*var load = Luxe.resources.load_json("assets/behavior_trees.json");
 
 		load.then(function(json:JSONResource){
