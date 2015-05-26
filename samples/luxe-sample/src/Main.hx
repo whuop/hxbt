@@ -3,10 +3,8 @@ package;
 import luxe.Game;
 import luxe.Sprite;
 import luxe.Vector;
-import sample.Blackboard;
 import luxe.Color;
-import sample.Walk;
-import sample.Door;
+
 import hxbt.BehaviorTree;
 import hxbt.composites.Sequence;
 
@@ -15,6 +13,9 @@ import sample.OpenDoorBehaviour;
 import sample.WalkThroughDoorBehaviour;
 import sample.CloseDoorBehaviour;
 import sample.BeLazyBehaviour;
+import sample.Walk;
+import sample.Door;
+import sample.Blackboard;
 
 
 class Main extends Game
@@ -57,20 +58,6 @@ class Main extends Game
 		sequence.add(new BeLazyBehaviour( ));
 
 		behaviorTree.setContext(bb);
-		/*var load = Luxe.resources.load_json("assets/behavior_trees.json");
-
-		load.then(function(json:JSONResource){
-			try {
-				behaviourTree = hxbt.loaders.BehaviorTreeJSONLoader.FromJSONObject(json.asset.json, "WalkThroughDoorAndStop");
-				behaviourTree.setContext({
-					actor: actor,
-					door: door
-				});
-			}
-			catch(err:String) {
-				trace("ERROR: " + err);
-			}
-		});*/
 	}
 	
 	public override function update( dt:Float ) 
