@@ -42,14 +42,14 @@ class BehaviorTreeJSONLoader
 	
 	//	Constructs the behavior tree 'treeName' defined in the JSON file 'JSON'.
 	//	Returns constructed tree if successful, returns null if unsuccessful.
-	public static function FromJSONString(JSON : String, treeName : String) : BehaviorTree
+	public static function FromJSONString<T>(JSON : String, treeName : String) : BehaviorTree<T>
 	{
 		return FromJSONObject(haxe.Json.parse(JSON), treeName);
 	}
 	
 	//	Constructs the behavior tree 'treeName' defined in the JSON file 'JSON'.
 	//	Returns constructed tree if successful, returns null if unsuccessful.
-	public static function FromJSONObject(JSON : Dynamic, treeName : String) : BehaviorTree
+	public static function FromJSONObject<T>(JSON : Dynamic, treeName : String) : BehaviorTree<T>
 	{
 		if(!Reflect.hasField(JSON, treeName)) {
 			throw "Behaviour tree '" + treeName + "' doesn't exist in this JSON!";
@@ -57,6 +57,7 @@ class BehaviorTreeJSONLoader
 
 		var tree = Reflect.field(JSON, treeName);
 		var roots:Array<String> = Reflect.fields(tree);
+		trace(roots);
 #if !behaviour
 		if(roots.length != 1) {
 #else
@@ -66,13 +67,13 @@ class BehaviorTreeJSONLoader
 		}
 		var root = Reflect.field(tree, roots[0]);
 		
-		var tree:BehaviorTree = new BehaviorTree();
-		var rootBehaviour:Behavior = GetBehavior(root, treeName);
+		var tree:BehaviorTree<T> = new BehaviorTree<T>();
+		var rootBehaviour:Behavior<T> = GetBehavior(root, treeName);
 		tree.setRoot(rootBehaviour);
 		return tree;
 	}
 
-	private static function GetBehavior(object : Dynamic, errorTrail : String):Behavior
+	private static function GetBehavior<T>(object : Dynamic, errorTrail : String):Behavior<T>
 	{
 		// we should be recieving an array of fields
 		// we actually only want there to be one field (JSON is kinda dumb that way)
@@ -85,7 +86,7 @@ class BehaviorTreeJSONLoader
 
 		switch(name) {
 			case 'hxbt.sequence': {
-				var sequence:Sequence = new Sequence();
+				var sequence:Sequence<T> = new Sequence<T>();
 				var arrI:Int = 0;
 				for(object in objects) {
 					sequence.add(GetBehavior(object, errorTrail + "." + name + ".[" + arrI + "]"));
@@ -95,7 +96,7 @@ class BehaviorTreeJSONLoader
 			}
 
 			case 'hxbt.selector': {
-				var selector:Selector = new Selector();
+				var selector:Selector<T> = new Selector<T>();
 				var arrI:Int = 0;
 				for(object in objects) {
 					selector.add(GetBehavior(object, errorTrail + "." + name + ".[" + arrI + "]"));
@@ -105,7 +106,7 @@ class BehaviorTreeJSONLoader
 			}
 
 			case 'hxbt.parallel': {
-				var parallel:Parallel = new Parallel();
+				var parallel:Parallel<T> = new Parallel<T>();
 				var arrI:Int = 0;
 				for(object in objects) {
 					parallel.add(GetBehavior(object, errorTrail + "." + name + ".[" + arrI + "]"));
@@ -118,7 +119,7 @@ class BehaviorTreeJSONLoader
 				if(objects.length > 1) {
 					throw "hxbt.alwaysfail can't have more than one child!";
 				}
-				var alwaysFail:AlwaysFail = new AlwaysFail();
+				var alwaysFail:AlwaysFail<T> = new AlwaysFail<T>();
 				if(objects.length > 0) {
 					alwaysFail.setChild(GetBehavior(objects[0], errorTrail + "." + name));
 				}
@@ -129,7 +130,7 @@ class BehaviorTreeJSONLoader
 				if(objects.length > 1) {
 					throw "hxbt.alwayssucceed can't have more than one child!";
 				}
-				var alwaysSucceed:AlwaysSucceed = new AlwaysSucceed();
+				var alwaysSucceed:AlwaysSucceed<T> = new AlwaysSucceed<T>();
 				if(objects.length > 0) {
 					alwaysSucceed.setChild(GetBehavior(objects[0], errorTrail + "." + name));
 				}
@@ -144,7 +145,7 @@ class BehaviorTreeJSONLoader
 				if(objects.length != 1) {
 					throw "hxbt.invert MUST have exactly one child!";
 				}
-				var invert:Invert = new Invert();
+				var invert:Invert<T> = new Invert<T>();
 				invert.setChild(GetBehavior(objects[0], errorTrail + "." + name));
 				return invert;
 			}
@@ -153,7 +154,7 @@ class BehaviorTreeJSONLoader
 				if(objects.length != 1) {
 					throw "hxbt.untilfail MUST have exactly one child!";
 				}
-				var untilFail:UntilFail = new UntilFail();
+				var untilFail:UntilFail<T> = new UntilFail<T>();
 				untilFail.setChild(GetBehavior(objects[0], errorTrail + "." + name));
 				return untilFail;
 			}
@@ -162,7 +163,7 @@ class BehaviorTreeJSONLoader
 				if(objects.length != 1) {
 					throw "hxbt.untilsuccess MUST have exactly one child!";
 				}
-				var untilSuccess:UntilSuccess = new UntilSuccess();
+				var untilSuccess:UntilSuccess<T> = new UntilSuccess<T>();
 				untilSuccess.setChild(GetBehavior(objects[0], errorTrail + "." + name));
 				return untilSuccess;
 			}
