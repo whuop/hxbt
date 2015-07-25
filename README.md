@@ -4,16 +4,22 @@ Behavior Tree implementation for Haxe.
 
 ### Installation Instructions
 
-Clone the repository or download as zip. Drag and drop folder src/hxbt to the src folder of your project.
+#### Using haxelib ( Recommended )
+hxbt hasn't yet been added as a haxelib package, but will be in the future. You can however manually add it once you have cloned the repository. To add hxbt to haxelib simple use the following command:
 
-This type of installation is only temporary and will be changed in the near future.
+haxelib dev hxbt path/to/hxbt
+
+#### Not using haxelib
+
+Clone the repository or download as zip. Drag and drop src/hxbt folder to the src folder of your project.
 
 ### Usage
 
-The only samples that currently exist for hxbt make use of Luxe( http://www.luxeengine.com ).
-More samples will be added in the future.
+The samples folder contains projects demonstrating how hxbt works and is a perfect place to get an idea of how the library can be used. 
 
-All samples are located in the samples folder https://github.com/whuop/hxbt/tree/master/samples/luxe-sample.
+All samples are located in the samples folder https://github.com/whuop/hxbt/tree/master/samples/.
+
+
 
 ### License
 
