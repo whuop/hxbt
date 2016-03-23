@@ -19,7 +19,9 @@ The samples folder contains projects demonstrating how hxbt works and is a perfe
 
 All samples are located in the samples folder https://github.com/whuop/hxbt/tree/master/samples/.
 
+### Are you using hxbt for a project?
 
+If you are, please let me know. I would love to see what people are creating using the library. And who knows, maybe I'll make a small showcase of games using hxbt in the future. 
 
 ### License
 
