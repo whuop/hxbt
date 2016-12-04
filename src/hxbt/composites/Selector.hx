@@ -10,11 +10,13 @@ class Selector<T> extends Composite<T>
 {
 	private var m_currentChild : Behavior<T>;
 	private var m_currentIndex : Int;
+	private var m_allChildrenTick:Bool;
+
 	
-	
-	public function new() 
+	public function new(allChildrenTick:Bool = false) 
 	{
 		super();
+		m_allChildrenTick = allChildrenTick;
 	}
 	
 	override function onInitialize(context : T)
@@ -29,8 +31,30 @@ class Selector<T> extends Composite<T>
 			_child.status = Status.INVALID;
 		}
 	}
+
+	function updateAllChildren(context : T, dt : Float) : Status
+	{
+		var status:Status;
+		for(index in m_currentIndex...m_children.length)
+		{
+			m_currentIndex = index;
+			m_currentChild = m_children[index];
+			status = m_currentChild.tick(context, dt);
+			if(status == SUCCESS)
+			{
+				m_currentIndex = 0;
+				return SUCCESS;
+			}			
+			else if(status == RUNNING)
+			{
+				return RUNNING;
+			}
+		}
+		m_currentIndex = 0;
+		return FAILURE;
+	}
 	
-	override function update(context : T, dt : Float) : Status
+	function updateChildPerChild(context : T, dt : Float) : Status
 	{
 		m_currentChild = m_children[m_currentIndex];
 		var s = m_currentChild.tick(context, dt);
@@ -50,6 +74,18 @@ class Selector<T> extends Composite<T>
 		}
 
 		return Status.RUNNING;
+	}
+
+	override function update(context : T, dt : Float) : Status
+	{
+		if(m_allChildrenTick)
+		{
+			return updateAllChildren(context, dt);
+		}
+		else
+		{
+			return updateChildPerChild(context, dt);
+		}
 	}
 	
 }
