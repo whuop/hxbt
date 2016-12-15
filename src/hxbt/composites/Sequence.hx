@@ -15,6 +15,10 @@ class Sequence<T> extends Composite<T>
 	private var m_allChildrenTick:Bool;
 
 	
+	/**
+	 * @param allChildrenTick Should the Sequence try to update a whole cycle
+	 * per tick or only one child.
+	*/
 	public function new(allChildrenTick:Bool = false) 
 	{
 		super();

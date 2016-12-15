@@ -19,6 +19,9 @@ The samples folder contains projects demonstrating how hxbt works and is a perfe
 
 All samples are located in the samples folder https://github.com/whuop/hxbt/tree/master/samples/.
 
+**Note** : This library's Parallel and Selector composites have two different updating alternatives: updating their logic one child per tick or doing a whole process per tick. Those alternatives are chosen
+with `allChildrenTick` at their construction.
+
 ### Are you using hxbt for a project?
 
 If you are, please let me know. I would love to see what people are creating using the library. And who knows, maybe I'll make a small showcase of games using hxbt in the future. 
