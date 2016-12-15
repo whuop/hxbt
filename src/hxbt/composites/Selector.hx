@@ -12,7 +12,10 @@ class Selector<T> extends Composite<T>
 	private var m_currentIndex : Int;
 	private var m_allChildrenTick:Bool;
 
-	
+	/**
+	 * @param allChildrenTick Should the Selector try to update a whole cycle
+	 * per tick or only one child.
+	*/
 	public function new(allChildrenTick:Bool = false) 
 	{
 		super();
